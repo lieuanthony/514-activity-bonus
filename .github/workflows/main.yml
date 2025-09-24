@@ -50,11 +50,11 @@ jobs:
 
       # Step 5: Preview the infrastructure changes
       - name: Terraform Plan
-        run: terraform plan
+        run: terraform plan -var-file="terraform.tfvars"
 
       # Step 6: Apply the infrastructure changes
       - name: Terraform Apply
-        run: terraform apply -auto-approve # Auto-approve flag skips manual confirmation
+        run: terraform apply -var-file="terraform.tfvars" -auto-approve # Auto-approve flag skips manual confirmation
 
       # Step 7: Store Terraform state in S3
       - name: Store state 
@@ -99,4 +99,4 @@ jobs:
 
       # Step 6: Destroy the infrastructure
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve # Auto-approve flag skips manual confirmation    
+        run: terraform destroy -var-file="terraform.tfvars" -auto-approve # Auto-approve flag skips manual confirmation    
