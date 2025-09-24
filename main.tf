@@ -24,3 +24,13 @@ resource "aws_instance" "wordpress_ec2" {
     Name = "WordPress EC2 Instance"
   }
 }
+
+# S3 instance resouce definition
+resource "aws_s3_bucket" "my_bucket" {
+   bucket        = "anthonyl-activity-bucket"
+   force_destroy = true # Delete terraform.tfstate file when destroying the bucket
+
+   tags = {
+     Name = "my bucket"
+  }
+}
